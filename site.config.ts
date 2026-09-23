@@ -2,9 +2,9 @@ import { defineSiteConfig } from "./src/config/site";
 export const siteConfig = defineSiteConfig({
  author: "Mingyu Zhao", title: "Mingyu Zhao | Senior Machine Learning Engineer",
  siteUrl: "https://mark-myzhao.github.io",
- description: "Mingyu Zhao is a Senior Machine Learning Engineer on Shopify's Sidekick team, working on distillation platforms and reinforcement learning infrastructure.",
- hero: { headline: "Distillation platforms & reinforcement learning infrastructure", subheadline: "I'm a Senior Machine Learning Engineer on Shopify's Sidekick team. My work focuses on distillation platforms and reinforcement learning infrastructure, including simulation environments. Previously, I worked on LLM training, reward services, and speech systems at Amazon. Outside of work, I enjoy photography.", profileImage: "/profile.svg", profileAlt: "Mingyu Zhao monogram" },
- affiliations: [{role:"Senior Machine Learning Engineer",department:"Sidekick",institution:"Shopify",url:"https://www.shopify.com"}],
+ description: "Mingyu Zhao is a Senior Machine Learning Engineer in Agentic Foundation Modeling at Shopify, building distributed data systems, efficient LLM training infrastructure, and RL simulation and reward systems.",
+ hero: { headline: "Distillation platforms & reinforcement learning infrastructure", subheadline: "I'm a Senior Machine Learning Engineer in Agentic Foundation Modeling at Shopify. My work focuses on distillation platforms and reinforcement learning infrastructure, including simulation environments. Previously, I worked on LLM training, reward services, and speech systems at Amazon. Outside of work, I enjoy photography, the outdoors, and coffee.", profileImage: "/profile.svg", profileAlt: "Mingyu Zhao monogram" },
+ affiliations: [{role:"Senior Machine Learning Engineer",department:"Agentic Foundation Modeling",institution:"Shopify",url:"https://www.shopify.com"}],
  researchInterests: ["Model distillation", "Reinforcement learning", "Simulation environments", "LLM evaluation"],
  socialLinks: [
  { label: "GitHub", href: "https://github.com/mark-myzhao", icon: "i-mdi:github" },
@@ -14,7 +14,7 @@ export const siteConfig = defineSiteConfig({
  navLinks: [{label:"About",href:"/about"},{label:"Projects",href:"/projects"},{label:"Research",href:"/research"},{label:"Photography",href:"/photography"}],
  footer: {showProfileLinks:true},
  pageTitles: {
- about:{description:"Senior Machine Learning Engineer at Shopify · Experience, education, and technical background."},
+ about:{description:"I build distributed data systems, efficient LLM training infrastructure, and simulation and reward systems for reinforcement learning."},
  projects:{description:"Engineering projects, systems, and experiments."},
  researches:{title:"Research",description:"Publications and ongoing research."}
  },

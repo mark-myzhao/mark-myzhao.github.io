@@ -1,19 +1,22 @@
 profile:
   - label: Current Role
-    value: Senior Machine Learning Engineer, Shopify Sidekick
+    value: Senior MLE · Shopify
   - label: Focus
-    value: Distillation platforms, reinforcement learning infrastructure, and simulation environments
+    value: |
+      Distributed Compute & Data
+      LLM Training & Efficiency
+      RL Simulation & Rewards
   - label: Beyond work
-    value: Photography
+    value: Photography · Outdoors · Coffee
 experience:
   - role: Senior Machine Learning Engineer
-    organization: Shopify · Sidekick
+    organization: Shopify · Agentic Foundation Modeling
     period: Jan 2026 – Present
     bullets:
-      - Build the distillation platform for the Sidekick team.
+      - Build the distillation platform for the Agentic Foundation Modeling team.
       - Develop reinforcement learning infrastructure, with a focus on simulation environments.
   - role: Machine Learning Engineer II
-    organization: Amazon · Store Foundation AI
+    organization: Amazon · Rufus
     period: Sep 2023 – Dec 2025
     bullets:
       - Led three MLEs to build a scalable reward service for LLM reinforcement learning, combining LLM-as-a-Judge, reward models, and rule-based signals to process over 100K requests daily.
@@ -25,7 +28,7 @@ experience:
     period: Mar 2022 – Sep 2023
     bullets:
       - Led a cross-functional team to build an interviewer recommendation service on Amazon ECS, reducing interview scheduling time per requisition by 50%.
-  - role: Machine Learning Engineer
+  - role: Software Development Engineer
     organization: Amazon · Alexa Speech
     period: Jun 2020 – Mar 2022
     bullets:

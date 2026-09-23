@@ -1,6 +1,8 @@
 profile:
   - label: Current Role
-    value: Senior MLE · Shopify
+    value: |
+      Senior MLE · Shopify
+      ex-Amazonian
   - label: Focus
     value: |
       🗄️ Large-scale data processing

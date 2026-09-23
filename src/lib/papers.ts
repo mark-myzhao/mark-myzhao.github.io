@@ -12,7 +12,7 @@ export function getFeaturedPapers(
 	papers: BibEntry[] = papersCache,
 ): BibEntry[] {
 	return papers
-		.filter((paper) => paper.category === 'Publication' || paper.category === 'Working Paper')
+		.filter((paper) => paper.category === 'Publication' || paper.category === 'Workshop Papers' || paper.category === 'Working Paper')
 		.sort((a, b) => Number(b.year ?? 0) - Number(a.year ?? 0))
 		.slice(0, limit);
 }

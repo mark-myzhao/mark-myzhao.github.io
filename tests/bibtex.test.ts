@@ -78,6 +78,15 @@ describe("parseBibtex", () => {
 		expect(entries[0].url).toBe("https://example.com/paper");
 	});
 
+	test("labels workshop papers and includes them on the home page", () => {
+		const entries = parseBibtex(`
+      @misc{shopgym, title = {ShopGym}, year = {2026}, journal = {ICML 2026 RLxF Workshop; LSEI @ COLM 2026}, public = {ws}, url = {https://arxiv.org/abs/2605.16116}}
+      @misc{simgym, title = {SimGym}, year = {2026}, journal = {COLM 2026 WAB}, public = {ws}, url = {https://arxiv.org/abs/2605.19219}}
+    `);
+		expect(entries.map((entry) => entry.category)).toEqual(["Workshop Papers", "Workshop Papers"]);
+		expect(getFeaturedPapers(2, entries).map((entry) => entry.id)).toEqual(["shopgym", "simgym"]);
+	});
+
 	test("sorts entries by year descending", () => {
 		const entries = parseBibtex(`
       @misc{old, title = {Old}, year = {2020}}

@@ -267,7 +267,7 @@ export function parseBibtex(raw: string): BibEntry[] {
 			number: text('number'),
 			pages: text('pages'),
 			abstract: text('abstract'),
-			category: publicField === 'yes' || publicField === 'pub' ? 'Publication' : publicField === 'wp' ? 'Working Paper' : publicField === 'wip' ? 'Work in Progress' : 'Other',
+			category: publicField === 'yes' || publicField === 'pub' ? 'Publication' : publicField === 'ws' ? 'Workshop Papers' : publicField === 'wp' ? 'Working Paper' : publicField === 'wip' ? 'Work in Progress' : 'Other',
 			keywords: text('keywords')?.split(',').map((keyword) => keyword.trim()).filter(Boolean) ?? [],
 		});
 	}

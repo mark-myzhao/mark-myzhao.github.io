@@ -14,6 +14,7 @@ export interface BibEntry {
 	rawBibtex?: string;
 	year?: number;
 	venue?: string;
+	note?: string;
 	url?: string;
 	doi?: string;
 	volume?: string;
@@ -259,6 +260,7 @@ export function parseBibtex(raw: string): BibEntry[] {
 			rawBibtex: [...definitions, source].join('\n'),
 			year,
 			venue: text('journal') ?? text('booktitle'),
+			note: text('note'),
 			url: text('url'),
 			doi: text('doi'),
 			volume: text('volume'),

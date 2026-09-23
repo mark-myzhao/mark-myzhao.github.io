@@ -71,6 +71,9 @@ const dialogId = `citation-dialog-${papers[0]?.id ?? "empty"}`;
                   <span class="scholarly-pill ml-1">{paper.category}</span>
                 )}
               </div>
+              {paper.note && (
+                <p class="text-xs font-medium text-accent-800 dark:text-accent-200">{paper.note}</p>
+              )}
 
               <button
                 type="button"

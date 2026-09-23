@@ -3,7 +3,7 @@ export const siteConfig = defineSiteConfig({
  author: "Mingyu Zhao", title: "Mingyu Zhao | Senior Machine Learning Engineer",
  siteUrl: "https://mark-myzhao.github.io",
  description: "Mingyu Zhao is a Senior Machine Learning Engineer in Agentic Foundation Modeling at Shopify, building distributed data systems, efficient LLM training infrastructure, and RL simulation and reward systems.",
- hero: { headline: "Distillation platforms & reinforcement learning infrastructure", subheadline: "I'm a Senior Machine Learning Engineer in Agentic Foundation Modeling at Shopify. My work focuses on distillation platforms and reinforcement learning infrastructure, including simulation environments. Previously, I worked on LLM training, reward services, and speech systems at Amazon. Outside of work, I enjoy photography, the outdoors, and coffee.", profileImage: "/profile.svg", profileAlt: "Mingyu Zhao monogram" },
+ hero: { headline: "Distillation platforms & reinforcement learning infrastructure", subheadline: "I'm a Senior MLE on the Agentic Foundation Modeling team at Shopify. My work focuses on LLM RL and pretraining infrastructure, distillation platforms, and large-scale multimodal data processing. Previously, I worked on LLM training (Rufus), reward services, and speech recognition systems at Amazon. Outside of work, I enjoy photography, the outdoors, and coffee.", profileImage: "/profile.svg", profileAlt: "Mingyu Zhao monogram" },
  affiliations: [{role:"Senior Machine Learning Engineer",department:"Agentic Foundation Modeling",institution:"Shopify",url:"https://www.shopify.com"}],
  researchInterests: ["Model distillation", "Reinforcement learning", "Simulation environments", "LLM evaluation"],
  socialLinks: [

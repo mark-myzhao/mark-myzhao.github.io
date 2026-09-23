@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { photographs, photographyWebsite } from "../data/photography";
+---
+<Layout title="Photography" description="A personal collection of photographs." schemaType="CollectionPage">
+<div class="page-stack">
+<header class="page-header"><h1 class="page-title">Photography</h1><p class="page-description">Outside of machine learning, I enjoy photography.</p>
+{photographyWebsite && <a class="action-link" href={photographyWebsite} target="_blank" rel="noopener noreferrer">Visit my photography website ↗</a>}</header>
+{photographs.length === 0 ? <p class="body-copy">Selected photographs will be added here soon.</p> :
+<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">{photographs.map(photo =>
+<figure class="space-y-3"><a href={photo.src} target="_blank" rel="noopener noreferrer" aria-label={`Open ${photo.title}`}><img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" width="1200" height="800" class="w-full h-auto rounded-lg" /></a><figcaption class="body-copy">{photo.title}{photo.location && <span> · {photo.location}</span>}</figcaption></figure>
+)}</div>}
+</div>
+</Layout>

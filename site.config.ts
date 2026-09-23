@@ -14,7 +14,7 @@ export const siteConfig = defineSiteConfig({
  navLinks: [{label:"About",href:"/about"},{label:"Projects",href:"/projects"},{label:"Research",href:"/research"},{label:"Photography",href:"/photography"}],
  footer: {showProfileLinks:true},
  pageTitles: {
- about:{description:"I build distributed data systems, efficient LLM training infrastructure, and simulation and reward systems for reinforcement learning."},
+ about:{description:"Building scalable infrastructure for data processing, LLM training, and reinforcement learning."},
  projects:{description:"Engineering projects, systems, and experiments."},
  researches:{title:"Research",description:"Publications and ongoing research."}
  },

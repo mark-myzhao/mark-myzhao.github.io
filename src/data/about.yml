@@ -18,9 +18,9 @@ experience:
     organization: Shopify · Agentic Foundation Modeling
     period: Jan 2026 – Present
     bullets:
-      - Co-developed ShopGym, a reproducible simulation environment for shopping-agent RL and evaluation, validated on 224 tasks across six sandbox shops.
-      - Shipped a fine-tuned Shopify Flow subagent that turns merchant requests into automations, with 2.2× faster responses and 68% lower cost than the model it replaced.
-      - Scaled a distillation platform to 17 specialized use cases, fine-tuning small models and subagents that matched downstream performance at 90% lower cost.
+      - Designed and implemented a simulation environment generation harness for shopping agent RL and evaluation, created 10 sandbox shops from different retail domains within 1 week.
+      - Built a Shopify Flow subagent that turns merchant requests into automations, with 2.2× faster responses and 68% lower cost by replacing the original model.
+      - Scaled a model distillation platform to 17 specialized use cases across teams, fine-tuning small models and subagents that matched downstream performance at 90% lower cost.
   - role: Machine Learning Engineer II
     organization: Amazon · Rufus
     period: Sep 2023 – Dec 2025

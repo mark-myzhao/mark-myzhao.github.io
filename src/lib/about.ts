@@ -46,6 +46,7 @@ export const aboutDataSchema = z
 						organization: optionalText,
 						period: optionalText,
 						bullets: z.array(contentTextSchema).optional(),
+						link: z.object({ label: contentTextSchema, href: contentTextSchema }).strict().optional(),
 					})
 					.strict(),
 			)

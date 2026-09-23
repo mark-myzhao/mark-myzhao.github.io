@@ -18,8 +18,12 @@ experience:
     organization: Shopify · Agentic Foundation Modeling
     period: Jan 2026 – Present
     bullets:
-      - Build the distillation platform for the Agentic Foundation Modeling team.
-      - Develop reinforcement learning infrastructure, with a focus on simulation environments.
+      - Built simulation environments for reinforcement learning and evaluation of shopping agents.
+      - Built and fine-tuned a Shopify Flow subagent that turns natural-language requests into automations.
+      - Built a distillation platform for task-specific small models and subagents; matched downstream performance at 90% lower cost and scaled to 17 use cases in 2026.
+    link:
+      label: Shopify Engineering write-up on Flow
+      href: https://shopify.engineering/fine-tuning-agent-shopify-flow
   - role: Machine Learning Engineer II
     organization: Amazon · Rufus
     period: Sep 2023 – Dec 2025

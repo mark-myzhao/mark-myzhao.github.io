@@ -5,6 +5,7 @@ import {
   type BibEntry,
   type CitationStyle,
 } from "../lib/bibtex";
+import siteConfig from "../side.config";
 
 interface Props {
   papers: BibEntry[];
@@ -50,7 +51,7 @@ const dialogId = `citation-dialog-${papers[0]?.id ?? "empty"}`;
                 </h3>
 
                 {paper.authors.length > 0 && (
-                  <p class="entry-supporting text-sm">{paper.authors.join(", ")}</p>
+                  <p class="entry-supporting text-sm">{paper.authors.map((author, index) => <>{index > 0 && ", "}{author === siteConfig.author ? <strong>{author}</strong> : author}</>)}</p>
                 )}
               </div>
 
@@ -95,7 +96,7 @@ const dialogId = `citation-dialog-${papers[0]?.id ?? "empty"}`;
                     class="publication-control action-link glass-control min-h-9 px-2.5 text-xs font-semibold leading-none"
                   >
                     <span class="i-mdi:file-pdf-box !text-sm" aria-hidden="true"></span>
-                    <span>PDF</span>
+                    <span>Paper</span>
                     <span class="sr-only"> for {paper.title}, opens in a new tab</span>
                   </a>
                 )}

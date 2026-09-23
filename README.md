@@ -1,4 +1,4 @@
-# Mark Zhao — personal website
+# Mingyu Zhao — personal website
 Based on [Astro Theme Scholars](https://github.com/jxpeng98/astro-theme-scholars).
 Navigation: About · Projects · Research · Photography. About is the CV page.
 
@@ -6,7 +6,7 @@ Navigation: About · Projects · Research · Photography. About is the CV page.
 Use Node 22.13+ and pnpm. Run `pnpm install --frozen-lockfile`, then `pnpm dev`.
 
 ## Content
-- Identity, links, navigation: `site.config.ts`. Confirm display name Mark Zhao.
+- Identity, links, navigation: `site.config.ts`.
 - Experience and education: `src/data/about.yml`.
 - Projects: `src/content/projects/*.md`. Complete the draft and set `draft: false`.
 - Papers: `src/data/publications.bib`. Use `public = {yes}`, `{wp}`, or `{wip}`.

@@ -11,5 +11,8 @@ export function getFeaturedPapers(
 	limit = 3,
 	papers: BibEntry[] = papersCache,
 ): BibEntry[] {
-	return papers.filter((paper) => paper.category === 'Publication').slice(0, limit);
+	return papers
+		.filter((paper) => paper.category === 'Publication' || paper.category === 'Working Paper')
+		.sort((a, b) => Number(b.year ?? 0) - Number(a.year ?? 0))
+		.slice(0, limit);
 }

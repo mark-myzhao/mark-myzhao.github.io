@@ -1,9 +1,56 @@
 profile:
-  - label: Role
-    value: Machine Learning Engineer
+  - label: Current Role
+    value: Senior Machine Learning Engineer, Shopify Sidekick
+  - label: Focus
+    value: Distillation platforms, reinforcement learning infrastructure, and simulation environments
   - label: Beyond work
     value: Photography
-experience: []
-education: []
+experience:
+  - role: Senior Machine Learning Engineer
+    organization: Shopify · Sidekick
+    period: Jan 2026 – Present
+    bullets:
+      - Build the distillation platform for the Sidekick team.
+      - Develop reinforcement learning infrastructure, with a focus on simulation environments.
+  - role: Machine Learning Engineer II
+    organization: Amazon · Store Foundation AI
+    period: Sep 2023 – Dec 2025
+    bullets:
+      - Led three MLEs to build a scalable reward service for LLM reinforcement learning, combining LLM-as-a-Judge, reward models, and rule-based signals to process over 100K requests daily.
+      - Improved Amazon Rufus through agentic RL training, increasing helpfulness and tool utilization while reducing over-refusal.
+      - Optimized multimodal LLM pretraining datasets through experimental training and dataset-mixture studies.
+      - Built monitoring and auto-recovery for distributed LLM training across 4,000+ H100/H200 GPUs, reducing training downtime by 75%.
+  - role: Software Development Engineer II
+    organization: AWS · Talent Acquisition and Data Analytics
+    period: Mar 2022 – Sep 2023
+    bullets:
+      - Led a cross-functional team to build an interviewer recommendation service on Amazon ECS, reducing interview scheduling time per requisition by 50%.
+  - role: Machine Learning Engineer
+    organization: Amazon · Alexa Speech
+    period: Jun 2020 – Mar 2022
+    bullets:
+      - Developed a scalable speech-recognition data pipeline covering over 40 TB and 250,000 hours of audio.
+      - Trained semi-supervised transcription models and optimized Spark operations and memory management, reducing memory use by 50% while maintaining accuracy.
+  - role: Graduate Research Assistant
+    organization: New York University · Control and Networks Lab
+    period: Sep 2018 – May 2020
+    bullets:
+      - Built end-to-end perception systems for autonomous robotic cars, using computer vision and deep reinforcement learning from prototyping through deployment.
+education:
+  - degree: M.S., Computer Engineering
+    institution: New York University
+    year: Aug 2018 – May 2020
+  - degree: B.Eng., Software Engineering
+    institution: Sun Yat-sen University
+    year: Aug 2014 – Jun 2018
 service: []
-sections: []
+sections:
+  - title: Technical Skills
+    icon: i-mdi:code-braces
+    items:
+      - title: Languages
+        description: Python, TypeScript, Java, SQL
+      - title: Machine Learning
+        description: PyTorch, TensorFlow/Keras, Transformers, Ray, LangChain, PySpark
+      - title: Cloud & Infrastructure
+        description: AWS Batch, ECS, Fargate, Lambda, DynamoDB, Bedrock, EMR, S3, SageMaker

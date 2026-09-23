@@ -95,7 +95,7 @@ describe("parseBibtex", () => {
 		expect(entry.category).toBe("Other");
 	});
 
-	test("selects only publications for the home page", () => {
+	test("selects publications and preprints by recency for the home page", () => {
 		const entries = parseBibtex(`
       @misc{working, title = {Working}, year = {2026}, public = {wp}}
       @misc{published, title = {Published}, year = {2025}, public = {yes}}
@@ -103,6 +103,7 @@ describe("parseBibtex", () => {
     `);
 
 		expect(getFeaturedPapers(3, entries).map((entry) => entry.id)).toEqual([
+			"working",
 			"published",
 		]);
 	});
@@ -131,9 +132,9 @@ describe("parseBibtex", () => {
 		expect(citations.bibtex).toContain("@inproceedings{smith2025citations,");
 	});
 
-	test("keeps every demo publication aligned with the fictional profile", () => {
+	test("includes the site owner among each publication's coauthors", () => {
 		for (const paper of getAllPapers()) {
-			expect(paper.authors).toEqual([siteConfig.author]);
+			expect(paper.authors).toContain(siteConfig.author);
 		}
 	});
 });

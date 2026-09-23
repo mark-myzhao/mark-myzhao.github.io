@@ -3,9 +3,9 @@ profile:
     value: Senior MLE · Shopify
   - label: Focus
     value: |
-      Distributed Compute & Data
-      LLM Training & Efficiency
-      RL Simulation & Rewards
+      Large-scale data processing
+      LLM training efficiency
+      RL simulation and reward systems
   - label: Beyond work
     value: Photography · Outdoors · Coffee
 experience:

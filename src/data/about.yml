@@ -3,11 +3,14 @@ profile:
     value: Senior MLE · Shopify
   - label: Focus
     value: |
-      Large-scale data processing
-      LLM training efficiency
-      RL simulation and reward systems
+      🗄️ Large-scale data processing
+      ⚡ LLM training efficiency
+      🤖 RL simulation and reward systems
   - label: Beyond work
-    value: Photography · Outdoors · Coffee
+    value: |
+      📷 Photography
+      🏕️ Outdoors
+      ☕ Coffee
 experience:
   - role: Senior Machine Learning Engineer
     organization: Shopify · Agentic Foundation Modeling

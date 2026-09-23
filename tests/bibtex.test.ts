@@ -146,4 +146,11 @@ describe("parseBibtex", () => {
 			expect(paper.authors).toContain(siteConfig.author);
 		}
 	});
+
+	test("lists all four current papers as publications", () => {
+		const papers = getAllPapers();
+		expect(papers).toHaveLength(4);
+		expect(papers.every((paper) => paper.category === "Publication")).toBe(true);
+		expect(papers[0].id).toBe("savadikar2026shopgym");
+	});
 });

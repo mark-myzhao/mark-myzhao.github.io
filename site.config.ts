@@ -20,7 +20,7 @@ export const siteConfig = defineSiteConfig({
  },
  homeBlocks: {
  showcase:{enabled:true,title:"Selected Projects",description:"Engineering work and experiments."},
- publications:{enabled:true,title:"Selected Publications",description:"Research and publications."},
+ publications:{enabled:true,title:"Publications",description:"Research and publications."},
  posts:{enabled:false}
  }
 });

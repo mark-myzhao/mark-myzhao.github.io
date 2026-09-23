@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import PostCard from "../components/PostCard.astro";
 import PublicationList from "../components/PublicationList.astro";
 import { getCollection } from "astro:content";
-import { getFeaturedPapers } from "../lib/papers";
+import { getAllPapers } from "../lib/papers";
 import siteConfig from "../side.config";
 import { Image } from "astro:assets";
 
@@ -33,7 +33,7 @@ const recentPosts = showPosts
 const primaryPost = recentPosts.find((post) => post.data.featured) ?? recentPosts[0];
 const secondaryPosts = recentPosts.filter((post) => post.id !== primaryPost?.id);
 
-const selectedPapers = showPublications ? getFeaturedPapers(3) : [];
+const papers = showPublications ? getAllPapers() : [];
 
 const rawProfileImage = siteConfig.hero.profileImage.trim();
 const profileImageUrl = /^https?:/i.test(rawProfileImage)
@@ -129,8 +129,8 @@ const profileAlt = siteConfig.hero.profileAlt || about.name;
           </p>
 
 		  <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
-            {showPublications && selectedPapers.length > 0 && (
-              <a href="#selected-publications" class="action-link px-0">
+            {showPublications && papers.length > 0 && (
+              <a href="#publications" class="action-link px-0">
                 Selected work
                 <span class="i-ph-arrow-down text-base" aria-hidden="true"></span>
               </a>
@@ -297,24 +297,20 @@ const profileAlt = siteConfig.hero.profileAlt || about.name;
       </section>
     )}
 
-    {showPublications && selectedPapers.length > 0 && (
-      <section class="content-section" aria-labelledby="selected-publications">
+    {showPublications && papers.length > 0 && (
+      <section class="content-section" aria-labelledby="publications">
       <div class="mb-4 flex flex-col gap-3 border-b border-paper-300/90 pb-4 dark:border-ink-700 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 id="selected-publications" class="section-heading">
+          <h2 id="publications" class="section-heading">
             {siteConfig.homeBlocks.publications.title}
           </h2>
           {siteConfig.homeBlocks.publications.description && (
             <p class="mt-1 text-sm text-ink-600 dark:text-paper-300">{siteConfig.homeBlocks.publications.description}</p>
           )}
         </div>
-        <a href="/research" class="action-link self-start px-0 sm:self-auto">
-          Browse all publications
-          <span class="i-ph-arrow-right text-base" aria-hidden="true"></span>
-        </a>
       </div>
 
-      <PublicationList papers={selectedPapers} />
+      <PublicationList papers={papers} />
       </section>
     )}
 

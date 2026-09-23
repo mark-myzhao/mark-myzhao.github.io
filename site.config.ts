@@ -5,10 +5,10 @@ export const siteConfig = defineSiteConfig({
  description: "Machine learning engineering, research, and photography.",
  hero: { headline: "Machine Learning Engineer", subheadline: "A space for my engineering projects, research, and photography.", profileImage: "/profile.svg", profileAlt: "MZ monogram" },
  socialLinks: [{ label: "GitHub", href: "https://github.com/mark-myzhao", icon: "i-mdi:github" }],
- navLinks: [{label:"About",href:"/about"},{label:"Projects",href:"/projects"},{label:"Research",href:"/research"},{label:"Photography",href:"/photography"},{label:"CV",href:"/cv"}],
+ navLinks: [{label:"About",href:"/about"},{label:"Projects",href:"/projects"},{label:"Research",href:"/research"},{label:"Photography",href:"/photography"}],
  footer: {showProfileLinks:true},
  pageTitles: {
- about:{description:"I'm Mark, a machine learning engineer. Outside of work, I enjoy photography."},
+ about:{description:"Machine Learning Engineer · Professional experience, education, and background."},
  projects:{description:"Engineering projects, systems, and experiments."},
  researches:{title:"Research",description:"Publications and ongoing research."}
  },

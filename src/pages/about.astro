@@ -6,6 +6,9 @@ import { aboutDataSchema } from "../lib/about";
 import { createUniqueSectionId } from "../lib/section-id";
 import siteConfig from "../side.config";
 import { parse } from "yaml";
+import { existsSync } from "node:fs";
+
+const hasCV = existsSync(new URL("../../public/cv.pdf", import.meta.url));
 
 const aboutData = aboutDataSchema.parse(parse(aboutRaw) ?? {});
 const profile = (aboutData.profile ?? []).filter((item) => item.label && item.value);
@@ -53,8 +56,8 @@ const customSections = sections
 
 const aboutNavItems = [
   ...(profile.length > 0 ? [{ href: "#profile", label: "Profile" }] : []),
-  ...(experience.length > 0 ? [{ href: "#experience", label: "Experience" }] : []),
-  ...(education.length > 0 ? [{ href: "#education", label: "Education" }] : []),
+  { href: "#experience", label: "Experience" },
+  { href: "#education", label: "Education" },
   ...(service.length > 0 ? [{ href: "#service", label: "Service" }] : []),
   ...customSections.map((section) => ({
     href: `#${section.id}`,
@@ -72,6 +75,7 @@ const aboutNavItems = [
     <header class="page-header">
       <h1 class="page-title">{pageTitle}</h1>
       <p class="page-description">{pageDescription}</p>
+      {hasCV && <a class="action-link" href="/cv.pdf" download>Download CV (PDF) ↓</a>}
     </header>
 
     <PageJumpNav items={aboutNavItems} />
@@ -102,18 +106,19 @@ const aboutNavItems = [
 
       <!-- Dual Track 1: Appointments (Experience) & Degrees (Education) -->
       {
-        (experience.length > 0 || education.length > 0) && (
-          <div class={`grid grid-cols-1 gap-8 ${experience.length > 0 && education.length > 0 ? "lg:grid-cols-2" : ""} items-start`}>
-            {experience.length > 0 && (
+        (
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 items-start">
+            {(
               <section id="experience" class="content-section scroll-mt-24 space-y-4">
                 <header class="flex items-end justify-between gap-4 border-b border-paper-300/90 pb-3 dark:border-ink-700">
                   <h2 class="section-heading">Experience</h2>
                   <p class="font-mono text-xs font-semibold tabular-nums text-ink-500 dark:text-paper-400">
-                    {experience.length} {experience.length === 1 ? "appointment" : "appointments"}
+                    {experience.length > 0 && `${experience.length} ${experience.length === 1 ? "role" : "roles"}`}
                   </p>
                 </header>
 
                 <div class="relative pl-6 sm:pl-7 border-l-2 border-paper-300/90 dark:border-ink-700 space-y-7 ml-2.5 my-3">
+                  {experience.length === 0 && <p class="body-copy">Experience details will be added soon.</p>}
                   {experience.map((exp) => (
                     <article class="relative group">
                       <span class="absolute -left-[31px] sm:-left-[35px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-accent-600 bg-paper-50 dark:bg-ink-950 dark:border-accent-400" aria-hidden="true"></span>
@@ -152,16 +157,17 @@ const aboutNavItems = [
               </section>
             )}
 
-            {education.length > 0 && (
+            {(
               <section id="education" class="content-section scroll-mt-24 space-y-4">
                 <header class="flex items-end justify-between gap-4 border-b border-paper-300/90 pb-3 dark:border-ink-700">
                   <h2 class="section-heading">Education</h2>
                   <p class="font-mono text-xs font-semibold tabular-nums text-ink-500 dark:text-paper-400">
-                    {education.length} {education.length === 1 ? "degree" : "degrees"}
+                    {education.length > 0 && `${education.length} ${education.length === 1 ? "degree" : "degrees"}`}
                   </p>
                 </header>
 
                 <div class="relative pl-6 sm:pl-7 border-l-2 border-paper-300/90 dark:border-ink-700 space-y-7 ml-2.5 my-3">
+                  {education.length === 0 && <p class="body-copy">Education details will be added soon.</p>}
                   {education.map((edu) => (
                     <article class="relative group">
                       <span class="absolute -left-[31px] sm:-left-[35px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-accent-600 bg-paper-50 dark:bg-ink-950 dark:border-accent-400" aria-hidden="true"></span>

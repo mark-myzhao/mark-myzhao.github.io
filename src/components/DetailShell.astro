@@ -103,6 +103,7 @@ const {
         prose-h2:text-[1.75rem] prose-h2:leading-[1.15] prose-h3:text-[1.375rem] prose-h3:leading-[1.25]
         prose-p:text-ink-700 dark:prose-p:text-paper-300
         prose-li:text-ink-700 dark:prose-li:text-paper-300
+        prose-img:h-auto prose-img:w-full prose-img:max-w-full
         prose-a:font-bold prose-a:text-accent-700 prose-a:decoration-accent-300 prose-a:underline-offset-4 hover:prose-a:text-accent-900 dark:prose-a:text-accent-200 dark:prose-a:decoration-accent-700 dark:hover:prose-a:text-accent-100
         prose-strong:text-ink-950 dark:prose-strong:text-paper-50
         prose-blockquote:border-l-accent-500 prose-blockquote:bg-accent-50/70 prose-blockquote:px-5 prose-blockquote:py-2 prose-blockquote:not-italic dark:prose-blockquote:bg-accent-900/20
@@ -111,14 +112,14 @@ const {
       </div>
     </div>
 
-    <aside class="order-1 space-y-6 lg:order-2 lg:sticky lg:top-24" aria-label="Details and resources">
+    <aside class="order-1 space-y-5 lg:order-2 lg:sticky lg:top-24" aria-label="Details and resources">
       {facts.length > 0 && (
-        <section class="rounded-2xl bg-paper-100/90 p-4 dark:bg-ink-900/70 sm:p-5" aria-labelledby="detail-facts">
-          <h2 id="detail-facts" class="entry-title mb-4 text-[1.125rem]">Details</h2>
-          <dl class="space-y-4">
+        <section class="rounded-2xl bg-paper-100/90 p-4 dark:bg-ink-900/70" aria-labelledby="detail-facts">
+          <h2 id="detail-facts" class="entry-title mb-2.5 text-[1.125rem]">Details</h2>
+          <dl class="divide-y divide-paper-300/80 dark:divide-ink-700">
             {facts.map((fact) => (
-              <div class="space-y-1 border-t border-paper-300/90 pt-3 first:border-0 first:pt-0 dark:border-ink-700">
-                <dt class="font-sans text-xs font-bold text-ink-500 dark:text-paper-400">{fact.label}</dt>
+              <div class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 py-2.5 first:pt-0 last:pb-0">
+                <dt class="font-sans text-xs font-bold leading-5 text-ink-500 dark:text-paper-400">{fact.label}</dt>
                 <dd class="font-sans text-sm leading-5 text-ink-800 dark:text-paper-200">{fact.value}</dd>
               </div>
             ))}

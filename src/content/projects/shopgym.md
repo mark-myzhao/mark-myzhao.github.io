@@ -36,6 +36,10 @@ links:
 
 ShopGym is an integrated framework for building realistic, reproducible simulation environments and scalable benchmarks for e-commerce web agents. It preserves the structure and interaction patterns of live storefronts while producing self-contained environments that can be reset, inspected, and used safely for reinforcement learning and evaluation.
 
+## Architecture
+
+[![ShopGym architecture showing the ShopArena environment-generation pipeline, simulated storefronts, ShopGuru task generation, and the e-commerce agent loop.](../../assets/projects/shop-gym-pipeline.png)](https://github.com/agentic-foundation-modeling-research/shop-gym)
+
 ## System
 
 The framework combines three core components:
@@ -43,10 +47,6 @@ The framework combines three core components:
 - **ShopArena** converts live seed storefronts into deterministic sandbox shops with generated catalogs, navigation, policies, and interaction flows.
 - **ShopGuru** synthesizes grounded evaluation tasks across seven shopping-agent skill categories.
 - **ShopBackend** serves each sandbox through a local GraphQL API, supporting repeatable agent interaction and evaluation.
-
-## My contribution
-
-I designed and implemented the simulation-environment generation harness used for shopping-agent reinforcement learning and evaluation. The workflow generated 10 sandbox shops spanning different retail domains within one week.
 
 ## Results
 

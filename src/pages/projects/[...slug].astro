@@ -14,7 +14,6 @@ export async function getStaticPaths() {
 const { project } = Astro.props as { project: CollectionEntry<"projects"> };
 const { Content } = await render(project);
 const { data } = project;
-const status = data.status[0].toUpperCase() + data.status.slice(1);
 ---
 
 <Layout
@@ -34,11 +33,6 @@ const status = data.status[0].toUpperCase() + data.status.slice(1);
     transitionKey={`project-${project.id}`}
     cover={data.cover}
     coverAlt={data.coverAlt}
-    facts={[
-      { label: "Status", value: status },
-      { label: "Period", value: data.period },
-      ...data.metadata,
-    ]}
     tags={[...data.badges, ...data.tech]}
     highlights={data.highlights}
     resources={data.links}

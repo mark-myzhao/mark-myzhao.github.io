@@ -39,7 +39,7 @@ const otherCollections = photoCollections.filter((item) => item.slug !== collect
 
     <section aria-label={`${collection.title} photographs`} class="columns-1 gap-4 sm:columns-2 lg:columns-3">
       {collection.photos.map((photo, index) => (
-        <figure class="mb-4 break-inside-avoid overflow-hidden rounded-lg bg-paper-200 dark:bg-ink-800">
+        <figure class="mb-4 inline-block w-full break-inside-avoid align-top overflow-hidden rounded-lg bg-paper-200 dark:bg-ink-800">
           <button
             type="button"
             class="group block w-full cursor-zoom-in"

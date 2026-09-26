@@ -9,8 +9,7 @@ export const siteConfig = defineSiteConfig({
  socialLinks: [
  { label: "GitHub", href: "https://github.com/mark-myzhao", icon: "i-mdi:github" },
  { label: "LinkedIn", href: "https://www.linkedin.com/in/mingyu-zhao-70a687172", icon: "i-mdi:linkedin" },
- { label: "Instagram", href: "https://www.instagram.com/mark_mingyuzhao/", icon: "i-mdi:instagram" },
- { label: "Email", href: "mailto:mingyusysu@gmail.com", icon: "i-mdi:email-outline" }
+ { label: "Instagram", href: "https://www.instagram.com/mark_mingyuzhao/", icon: "i-mdi:instagram" }
  ],
  navLinks: [{label:"About",href:"/about"},{label:"Projects",href:"/projects"},{label:"Research",href:"/research"},{label:"Photography",href:"/photography"}],
  footer: {showProfileLinks:true},

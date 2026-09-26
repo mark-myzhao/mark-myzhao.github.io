@@ -1,0 +1,69 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { photoCollections, type PhotoCollection } from "../../data/photography";
+
+export async function getStaticPaths() {
+  return photoCollections.map((collection) => ({
+    params: { slug: collection.slug },
+    props: { collection },
+  }));
+}
+
+const { collection } = Astro.props as { collection: PhotoCollection };
+const otherCollections = photoCollections.filter((item) => item.slug !== collection.slug);
+---
+
+<Layout
+  title={`${collection.title} Photography`}
+  description={collection.description}
+  image={collection.photos[0]?.src}
+  imageAlt={collection.photos[0]?.alt}
+  imageWidth={collection.photos[0]?.width}
+  imageHeight={collection.photos[0]?.height}
+  schemaType="CollectionPage"
+>
+  <article class="page-stack">
+    <header class="space-y-6 border-b border-paper-300/90 pb-7 pt-2 dark:border-ink-700 sm:pb-9">
+      <a href="/photography" class="action-link w-fit px-0">
+        <span class="i-mdi:arrow-left" aria-hidden="true"></span>
+        All collections
+      </a>
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div class="max-w-[42rem] space-y-3">
+          <h1 class="page-title">{collection.title}</h1>
+          <p class="page-description">{collection.description}</p>
+        </div>
+        <span class="meta-chip w-fit">{collection.photos.length} {collection.photos.length === 1 ? "photograph" : "photographs"}</span>
+      </div>
+    </header>
+
+    <section aria-label={`${collection.title} photographs`} class="columns-1 gap-4 sm:columns-2 lg:columns-3">
+      {collection.photos.map((photo, index) => (
+        <figure class="mb-4 break-inside-avoid overflow-hidden rounded-lg bg-paper-200 dark:bg-ink-800">
+          <img
+            src={photo.src}
+            alt={`${photo.alt} ${index + 1}`}
+            width={photo.width}
+            height={photo.height}
+            loading={index < 3 ? "eager" : "lazy"}
+            fetchpriority={index === 0 ? "high" : undefined}
+            decoding="async"
+            referrerpolicy="no-referrer"
+            class="h-auto w-full"
+          />
+        </figure>
+      ))}
+    </section>
+
+    <nav class="border-t border-paper-300/90 pt-6 dark:border-ink-700" aria-label="Other photography collections">
+      <p class="mb-3 font-sans text-xs font-bold uppercase tracking-[0.12em] text-ink-500 dark:text-paper-400">Explore more</p>
+      <div class="flex flex-wrap gap-2">
+        {otherCollections.map((item) => (
+          <a class="meta-chip transition hover:border-accent-400 hover:text-accent-800 dark:hover:border-accent-600 dark:hover:text-accent-200" href={`/photography/${item.slug}`}>
+            {item.title}
+          </a>
+        ))}
+      </div>
+    </nav>
+  </article>
+</Layout>

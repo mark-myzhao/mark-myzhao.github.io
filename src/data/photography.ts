@@ -1,51 +1,105 @@
-export const photographyWebsite = "https://mysquared.myportfolio.com";
+export interface Photograph { src: string; width: number; height: number; alt: string }
+export interface PhotoCollection { slug: string; title: string; description: string; photos: Photograph[] }
 
-export const photographs: {
-	src: string;
-	alt: string;
-	title: string;
-	href: string;
-}[] = [
-	{
-		title: "City",
-		alt: "City photography",
-		href: "https://mysquared.myportfolio.com/city",
-		src: "https://cdn.myportfolio.com/cf52e289-6ed2-4f39-8707-94b1a0f61415/50ecb208-261a-4729-aee9-11fc924281e7_carw_16x9x1280.jpg?h=c8b48bb238747499716a416c45c0c305",
-	},
-	{
-		title: "Mountain",
-		alt: "Mountain photography",
-		href: "https://mysquared.myportfolio.com/mountain",
-		src: "https://cdn.myportfolio.com/cf52e289-6ed2-4f39-8707-94b1a0f61415/c6b2a7a6-addd-4ce5-bf2a-756a59e9d2da_carw_16x9x1280.jpg?h=b5d9eb63674dc9b08f89b13442e9e938",
-	},
-	{
-		title: "Lake",
-		alt: "Lake photography",
-		href: "https://mysquared.myportfolio.com/lake",
-		src: "https://cdn.myportfolio.com/cf52e289-6ed2-4f39-8707-94b1a0f61415/1ae6233c-ae6a-4202-8c71-0cfd3952d2d3_carw_16x9x1280.jpg?h=9a7f2fe0b526658938c1e1ce2574a4d5",
-	},
-	{
-		title: "The Stars",
-		alt: "Night-sky photography",
-		href: "https://mysquared.myportfolio.com/star",
-		src: "https://cdn.myportfolio.com/cf52e289-6ed2-4f39-8707-94b1a0f61415/b58df80c-923f-43c7-af68-70e2ddb12a0f_carw_16x9x1280.jpg?h=3a2c4f783b5814fee4bf7f251503e079",
-	},
-	{
-		title: "Road",
-		alt: "Road photography",
-		href: "https://mysquared.myportfolio.com/road",
-		src: "https://cdn.myportfolio.com/cf52e289-6ed2-4f39-8707-94b1a0f61415/b94aec99-5e43-424d-8c60-44e860f6d775_carw_16x9x1280.jpg?h=358904fd63bbeb0175d2297b77a3edfc",
-	},
-	{
-		title: "Ocean",
-		alt: "Ocean photography",
-		href: "https://mysquared.myportfolio.com/ocean",
-		src: "https://cdn.myportfolio.com/cf52e289-6ed2-4f39-8707-94b1a0f61415/46fe67d6-a83e-4674-93a3-aac0992459fa_carw_16x9x1280.jpg?h=212770693baf393859291eb63e695091",
-	},
-	{
-		title: "Wildlife",
-		alt: "Wildlife photography",
-		href: "https://mysquared.myportfolio.com/wildlife",
-		src: "https://cdn.myportfolio.com/cf52e289-6ed2-4f39-8707-94b1a0f61415/2505086b-3866-455a-92c5-b146c25466b9_carw_16x9x1280.jpg?h=004cc0a5f48e55b194367b5ebebfb8b7",
-	},
+type PhotoTuple = [src: string, width: number, height: number];
+const makeCollection = (slug: string, title: string, description: string, photos: PhotoTuple[]): PhotoCollection => ({
+	slug, title, description,
+	photos: photos.map(([src, width, height]) => ({ src, width, height, alt: `${title} photograph` })),
+});
+
+const root = "https://cdn.myportfolio.com/cf52e289-6ed2-4f39-8707-94b1a0f61415/";
+const p = (path: string, width: number, height: number): PhotoTuple => [`${root}${path}`, width, height];
+
+export const photoCollections: PhotoCollection[] = [
+	makeCollection("city", "City", "Architecture, streets, and the rhythm of urban life.", [
+		p("333571f7-d8f0-41a1-a48b-c3cb62971a69_rw_1920.jpg?h=5dff9989304c68077f115a8d9c104869",364,242),
+		p("5f599afc-1cbd-4bf5-bc29-f1a01e503bb0_rw_1920.jpg?h=35dabc7295e467defec5a48546a648b6",182,242),
+		p("2acd7955-dee8-4fa5-b024-e5c15e7d8682_rw_1920.jpg?h=23ea9c9fa06070cdf3a48d3fb52d4d54",432,243),
+		p("79c97aa1-0896-4483-a4db-195a85e9d087_rw_1920.jpg?h=3da1e95968b8dac5c430145e321ec3ba",162,243),
+		p("6bb802d6-9506-4950-81df-f1fa2a382c85_rw_1920.jpg?h=51ea8d32cbd68443ba022c13386f1757",193,257),
+		p("803baaeb-6763-4378-9ba2-b57b733b2e36_rw_1920.jpg?h=c172972335893311bed4cffeef232e58",387,258),
+		p("a705fbb8-5558-42d5-9bb4-ec2fa009eec8_rw_1920.jpg?h=dbf8ddb43b88c6d5e6713b9ab26bf0c3",172,258),
+		p("47243b01-5559-471d-874a-4829716c91db_rw_1920.jpg?h=b70cfacf07f2788bd0870b7759695a1e",387,258),
+		p("bfa39269-a4c1-4b07-860c-476ed88f46d0_rw_1920.jpg?h=8699afe952c9a3526c41aea870b9c47c",168,224),
+		p("076ff529-62c2-4d66-a1b2-263cead5b270_rw_1920.jpg?h=7e36b9cb8108ad9ec2c492df591e44ca",336,224),
+		p("670ee5cf-dc1d-4a25-84e7-7e93d2db00e6_rw_1920.jpg?h=a039b92b85c8aedfee0e8be567233c84",336,224),
+		p("f15835e1-bd8f-4369-a8e5-37300d9d5867_rw_1920.jpg?h=6436180b52d301c638ab865a4b053880",298,224),
+		p("4ee24d83-dc1f-4bb8-8889-e9fb96a461ea_rw_1920.jpg?h=3e915736d55638aa792d02837556c884",480,320),
+		p("27d06d0d-7b5d-41c1-a540-9fb78f16fbe2_rw_1920.jpg?h=5d9534777d0a8e5b7ede72a98e225681",427,320),
+		p("2db65990-c1dc-432c-9487-fe47d8279f6f_rw_1920.jpg?h=15ec5b8481c7b00f60c205803bfd6671",240,320),
+	]),
+	makeCollection("mountain", "Mountain", "High country, changing weather, and quiet trails.", [
+		p("d0505a45-f050-42e7-966a-ea3dcce69530_rw_1920.jpg?h=52951a9a34a7d15eedde6e2bdbeca1c9",393,262),
+		p("3ba59ac5-7f0d-46b0-8310-766c7a07679c_rw_1920.jpg?h=0afeeaf7840bf9d472e0c8557b287964",393,262),
+		p("fb3f3d59-121e-4479-b8f3-80842040c6d9_rw_1920.jpg?h=46ad65f8b8767425ba776fce31937c0a",175,262),
+		p("d24091d6-6ceb-4449-ab47-a464ed4a1e0b_rw_1920.jpg?h=c5a25375b3c9b7c2b9a3886984bd2827",175,262),
+		p("103f8b99-1024-4186-9452-91739f38123f_rw_1920.jpg?h=d479f2cadb8c3fc30a173ec7cfa8e448",172,258),
+		p("347a43a2-0c0d-4b56-a98a-acd6a860dc3d_rw_1920.jpg?h=a950e049b2dabc03b4aeb621c23dd5ed",387,258),
+		p("a5a01da1-851c-4d0e-8adf-68e6cb828edf_rw_1920.jpg?h=aa64aedece3be08fb424d8e2955dacab",387,258),
+		p("c15b57a6-5d2c-46ea-8156-8679a66d5601_rw_1920.jpg?h=6ab0b89209c44fb043f46775bd9b5ebb",194,258),
+		p("cccf8671-5360-4a9d-b409-2e8956315667_rw_1920.jpg?h=137228b365c5080ac78303ec38da5809",436,327),
+		p("f0bca541-e597-49e3-b640-dac167e3faad_rw_1920.jpg?h=4f417794f71c8d1ac6349ee4e7040221",219,328),
+		p("94615011-0baf-4abf-bbe1-eb6eec5765f6_rw_1920.jpg?h=e773f3186cb7b4f1403e10d140e8679e",492,328),
+		p("9a4d31ae-f986-4939-8af1-856cb6fd4e15_rw_1920.jpg?h=6b1bd126ad90a7735cec232c8fe592e0",397,264),
+		p("43c62027-9a6d-46b5-b55c-22b5591de686_rw_1920.jpg?h=bac19664be377bdeccd6b19ab19d5cc6",353,264),
+		p("368969ac-0353-42d9-aaf0-3a0e644bd120_rw_1920.jpg?h=d2aedc2e967e75bcdb2c88a035d9d469",397,264),
+	]),
+	makeCollection("lake", "Lake", "Still water, reflections, and changing light.", [
+		p("0ee7d225-3b37-4e3d-b678-6fc5fe00d7be_rw_1920.jpg?h=49910ddd936c7a61151d700a0775e04b",382,254),
+		p("5add73fd-6ee7-4c0d-910d-3f68596fbf41_rw_1920.jpg?h=2f4aea890d7197fd89f3b9d2dc717dd5",383,255),
+		p("016258c6-5f50-448a-b17b-bff382499bbb_rw_1920.jpg?h=fc53b811b060fefcad79c1eb790d20e8",383,255),
+		p("d88d2550-f9e1-4bca-aace-bcc73adacfa4_rw_1920.jpg?h=cbcbd5a13d2952ed3119890c4446186f",413,275),
+		p("7dd5fc56-5fb4-4070-ab14-a7713bbfb0c5_rw_1920.jpg?h=93fe7cf624d6a3b9cf4728aebeb577af",366,275),
+		p("eb0c1175-fd0d-4b6b-b924-11d394fe9db7_rw_1920.jpg?h=cae0a6e90c70a500a1cf1601650d51b5",366,275),
+		p("8f55364d-3514-4617-898e-9d77342a0da2_rw_1920.jpg?h=02917de725a5851ba76e01191ddc7d56",383,287),
+		p("114d32a4-6cbd-4414-a8c5-3774ebd2f42a_rw_1920.jpg?h=9594eede94cd42ab4ea75bb35816da08",383,287),
+		p("17ff50cb-5d14-4f7f-9ecf-6b631aabf837_rw_1920.jpg?h=6f93c082fbe44fe5d5af5d08ac92ca07",383,287),
+		p("7fdbab7d-1b01-4904-a258-55241e1cedcb_rw_1920.jpg?h=b1c24452e0b27a9aeba1554878f6f141",383,286),
+		p("d3023fe8-c0cb-4a64-b5df-7dd086ea787c_rw_1920.jpg?h=3b7af17aaffa4abbc90c42a82119171d",383,287),
+		p("69d6cb03-5b5f-4c9a-b4b0-2f1e09217328_rw_1920.jpg?h=24b8c08b4ff152b9aa0aeb913349b024",383,287),
+	]),
+	makeCollection("the-stars", "The Stars", "Night skies and the landscapes beneath them.", [
+		p("3bd77087-4df8-413f-93e1-4d1976663348_rw_1920.jpg?h=2db5ab2f8019356e9abb16f3bf13b571",492,328),
+		p("c50c4961-751b-41bb-b677-5d52954b62f8_rw_1920.jpg?h=c03483f094157fb8b89547f37feb4921",436,327),
+		p("06d54746-1ef8-4301-9499-860deac1cd73_rw_1920.jpg?h=cb3ce3097222367ee588af3710922123",578,385),
+		p("a1bf7de9-15bc-49fc-a45a-473957cad26c_rw_1920.jpg?h=ebcb564b5c2a32cef190970120339cdb",578,385),
+	]),
+	makeCollection("road", "Road", "A frame from the journey between places.", [
+		p("c9a6a0a0-4ea8-4df0-b35e-7499db456cc5_rw_1920.jpg?h=259369a5f847e0f10c179069cd86d785",1164,1552),
+	]),
+	makeCollection("ocean", "Ocean", "Coastlines, open water, and movement.", [
+		p("b3883935-4051-419a-abad-6c4ce1fcb10b_rw_1920.jpg?h=06b6b8cb0ea7803f00bcdd28bcce114d",383,255),
+		p("2c6a70a6-b434-4426-8b1f-afa5c766741c_rw_1920.jpg?h=14dad977b22fb3dfee5d52144c6242e0",382,254),
+		p("183fecca-064c-4a36-a823-e191bef8938e_rw_1920.jpg?h=90b955179c4ec5d467b4fd104112f69d",383,255),
+		p("5054b316-e843-4162-b816-b3cd7cacdc62_rw_1920.jpg?h=3a194768e832b57d2ad5e5da1282ef62",383,255),
+		p("29c61706-81fe-4d4f-8219-3e9f7acb10d2_rw_1920.jpg?h=4082df3d30be427fd875f9d266611e96",383,255),
+		p("868b7ec0-3bda-4d56-95f0-ce23ed10b418_rw_1920.jpg?h=78da50c079f9b0b411864c533f66be63",383,255),
+		p("941de020-cd93-4c6c-bc26-b7c0021e62ec_rw_1920.jpg?h=35f957202690dbbfc73280d323960295",383,255),
+		p("a66fc6fc-3246-43cc-a692-14ce9bae66d7_rw_1920.jpg?h=e49820abf9b1360d08c929e423100fe5",382,254),
+		p("b3402436-40bd-45af-b1b9-318e87e08201_rw_1920.jpg?h=6617a92c44deeb7ecd853ce53969748a",383,255),
+		p("2144565a-e804-4794-b7be-66c16fb247ca_rw_1920.jpg?h=357086f7d61f0d82eb0ba1c26eca64f3",413,275),
+		p("cc85987a-d211-4f00-92b2-b48a3dbf49b1_rw_1920.jpg?h=d2c50fc40ca194b578e6ec633e65d0f3",366,275),
+		p("09bc9e4e-a849-4ece-95d2-88670e195b4d_rw_1920.jpg?h=5ec2d2c93b1666afac811360d2049f5f",366,275),
+	]),
+	makeCollection("wildlife", "Wildlife", "Animals encountered in the field and along the way.", [
+		p("f766b662-5a32-405a-ab2c-5693a8b5ebdf_rw_1920.jpg?h=8781f5644f719f4f4d2ea581183c5b9b",207,207),
+		p("1869d4fa-fefe-4b8b-ba2b-6385ad99d811_rw_1920.jpg?h=f2766d62b11e4de7a43cae180ed93fae",311,207),
+		p("45df3f7c-96bf-48ea-bb14-0c39cbe57971_rw_1920.jpg?h=485dd54802ae221a5bb6910e549f8a17",311,207),
+		p("29a5abc7-6a24-4949-a047-4c43e663e560_rw_1920.jpg?h=e33587c991e916b7637f134cca4c363c",311,207),
+		p("e1a49ac4-c163-4755-a431-6aa0ab9bc283_rw_1920.jpg?h=acfdd8218cf989ed15ac5d3f57b54057",383,255),
+		p("ce5db331-2065-4639-91fd-950aef549f98_rw_1920.jpg?h=9c6cf822dec6e2e1ee89adcf104fc528",383,255),
+		p("35f9982d-b391-4e7d-b804-f30cf78829f2_rw_1920.jpg?h=29c18dc24273055fc9c1fc9b5a68e474",383,255),
+		p("f8348e7a-17c5-480b-81ff-c193d3abce1a_rw_1920.jpg?h=47565c9f6bdedf433fdeb06be6f13788",326,217),
+		p("f0092529-44db-4b54-847b-6217f0026acc_rw_1920.jpg?h=34f38eeff4024bebe763a988809085ac",326,217),
+		p("dd8f0da3-95a5-4a95-a9ee-df386fc0c618_rw_1920.jpg?h=fb47d35cb0caf482806820f0001f8309",326,217),
+		p("bc937f9e-231f-49b1-8611-bd80dccb667a_rw_1920.jpg?h=17df1083ef1c0bcbc0d8118a9a8b2984",163,217),
+		p("45c49aa1-22a5-4f2f-85cc-0b77abddabef_rw_1920.jpg?h=596957bd27e779ca0017e1f9a2c8990f",189,252),
+		p("2e5b859a-0501-4a9f-922a-4ab818ff32c4_rw_1920.jpg?h=aec929791a2e84893d9fdbf571cdbb1a",189,252),
+		p("1457f3fa-053d-40a7-a602-e69116f80875_rw_1920.jpg?h=d3a1ab935bfb37abb45ff366e77ec539",189,252),
+		p("6f5f13cd-63f3-48dc-9f75-3ef5be52da60_rw_1920.jpg?h=3cf0be076d58bb99a1174f1bd8771080",189,252),
+		p("939bbfe0-5b60-4352-815f-213fa4288751_rw_1920.jpg?h=f3a8091c407b7291cd1c0940ab1daae2",377,251),
+		p("a10328c6-a8b7-4337-98cd-aabae19255d6_rw_1920.jpg?h=e94cdff8453f94c6f031a481270c52a6",413,275),
+		p("02f6e8f9-ccc3-4124-854b-bc7508282fe8_rw_1920.jpg?h=7e36edf2f2f4711dfe43492726398a75",366,275),
+		p("cad7d845-df89-41d4-89b1-e4412ae400cb_rw_1920.jpg?h=7da55b6eb207dc713da6a6f5601ccf8b",368,275),
+	]),
 ];

@@ -1,22 +1,33 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { photographs, photographyWebsite } from "../data/photography";
+import { photoCollections } from "../data/photography";
 ---
+
 <Layout title="Photography" description="A personal collection of photographs." schemaType="CollectionPage">
-<div class="page-stack">
-<header class="page-header"><h1 class="page-title">Photography</h1><p class="page-description">Outside of work, I explore landscape, light, and everyday moments through photography.</p>
-{photographyWebsite && <a class="action-link" href={photographyWebsite} target="_blank" rel="noopener noreferrer">Visit my photography website ↗</a>}</header>
-{photographs.length === 0 ? <p class="body-copy">Selected photographs will be added here soon.</p> :
-<div class="grid grid-cols-1 gap-x-7 gap-y-9 sm:grid-cols-2">{photographs.map(photo =>
-<figure class="group space-y-3">
-  <a href={photo.href} target="_blank" rel="noopener noreferrer" aria-label={`View ${photo.title} photography`} class="block overflow-hidden rounded-xl bg-paper-200 dark:bg-ink-800">
-    <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" width="1280" height="720" referrerpolicy="no-referrer" class="aspect-video h-auto w-full object-cover transition duration-500 ease-out group-hover:scale-[1.015]" />
-  </a>
-  <figcaption class="flex items-center justify-between gap-3">
-    <span class="entry-title text-[1.0625rem]">{photo.title}</span>
-    <span class="i-mdi:arrow-top-right text-ink-400 transition group-hover:text-accent-700 dark:text-paper-500 dark:group-hover:text-accent-200" aria-hidden="true"></span>
-  </figcaption>
-</figure>
-)}</div>}
-</div>
+  <div class="page-stack">
+    <header class="page-header">
+      <h1 class="page-title">Photography</h1>
+      <p class="page-description">Outside of work, I explore landscape, light, and everyday moments through photography.</p>
+    </header>
+
+    <div class="grid grid-cols-1 gap-x-7 gap-y-10 sm:grid-cols-2">
+      {photoCollections.map((collection) => {
+        const cover = collection.photos[0];
+        return (
+          <article class="group space-y-3">
+            <a href={`/photography/${collection.slug}`} class="block overflow-hidden rounded-xl bg-paper-200 dark:bg-ink-800" aria-label={`View ${collection.title} collection`}>
+              <img src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} loading="lazy" decoding="async" referrerpolicy="no-referrer" class="aspect-[4/3] h-auto w-full object-cover transition duration-500 ease-out group-hover:scale-[1.015]" />
+            </a>
+            <div class="flex items-start justify-between gap-4">
+              <div class="space-y-1">
+                <h2 class="entry-title text-[1.125rem]"><a href={`/photography/${collection.slug}`} class="link-plain">{collection.title}</a></h2>
+                <p class="font-sans text-sm leading-6 text-ink-600 dark:text-paper-400">{collection.description}</p>
+              </div>
+              <span class="meta-chip shrink-0">{collection.photos.length}</span>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
 </Layout>

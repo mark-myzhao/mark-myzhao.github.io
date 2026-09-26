@@ -40,17 +40,26 @@ const otherCollections = photoCollections.filter((item) => item.slug !== collect
     <section aria-label={`${collection.title} photographs`} class="columns-1 gap-4 sm:columns-2 lg:columns-3">
       {collection.photos.map((photo, index) => (
         <figure class="mb-4 break-inside-avoid overflow-hidden rounded-lg bg-paper-200 dark:bg-ink-800">
-          <img
-            src={photo.src}
-            alt={`${photo.alt} ${index + 1}`}
-            width={photo.width}
-            height={photo.height}
-            loading={index < 3 ? "eager" : "lazy"}
-            fetchpriority={index === 0 ? "high" : undefined}
-            decoding="async"
-            referrerpolicy="no-referrer"
-            class="h-auto w-full"
-          />
+          <button
+            type="button"
+            class="group block w-full cursor-zoom-in"
+            data-photo-index={index}
+            data-photo-src={photo.src}
+            data-photo-alt={`${photo.alt} ${index + 1}`}
+            aria-label={`Enlarge ${photo.alt.toLowerCase()} ${index + 1}`}
+          >
+            <img
+              src={photo.src}
+              alt={`${photo.alt} ${index + 1}`}
+              width={photo.width}
+              height={photo.height}
+              loading={index < 3 ? "eager" : "lazy"}
+              fetchpriority={index === 0 ? "high" : undefined}
+              decoding="async"
+              referrerpolicy="no-referrer"
+              class="h-auto w-full transition duration-300 group-hover:scale-[1.01] group-hover:brightness-105"
+            />
+          </button>
         </figure>
       ))}
     </section>
@@ -66,4 +75,61 @@ const otherCollections = photoCollections.filter((item) => item.slug !== collect
       </div>
     </nav>
   </article>
+
+  <dialog id="photo-lightbox" class="m-auto h-[100dvh] w-screen max-w-none items-center justify-center border-0 bg-black/95 p-4 text-white sm:p-10" aria-label="Photo viewer">
+    <button type="button" data-lightbox-close class="absolute right-3 top-3 z-10 grid h-11 w-11 place-items-center rounded-full bg-black/55 text-xl text-white transition hover:bg-black/80 sm:right-5 sm:top-5" aria-label="Close photo viewer">
+      <span class="i-mdi:close" aria-hidden="true"></span>
+    </button>
+    <button type="button" data-lightbox-prev hidden={collection.photos.length < 2} class="absolute left-2 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-black/55 text-2xl text-white transition hover:bg-black/80 sm:left-5" aria-label="Previous photograph">
+      <span class="i-mdi:chevron-left" aria-hidden="true"></span>
+    </button>
+    <figure class="flex h-full w-full items-center justify-center">
+      <img data-lightbox-image src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" class="max-h-full max-w-full object-contain" referrerpolicy="no-referrer" />
+    </figure>
+    <button type="button" data-lightbox-next hidden={collection.photos.length < 2} class="absolute right-2 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-black/55 text-2xl text-white transition hover:bg-black/80 sm:right-5" aria-label="Next photograph">
+      <span class="i-mdi:chevron-right" aria-hidden="true"></span>
+    </button>
+    <p data-lightbox-count class="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-black/55 px-3 py-1.5 font-sans text-xs tabular-nums text-white/85 sm:bottom-5"></p>
+  </dialog>
 </Layout>
+
+<style>
+  #photo-lightbox[open] { display: flex; }
+  #photo-lightbox::backdrop { background: rgb(0 0 0 / 0.9); }
+</style>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>("#photo-lightbox");
+  const image = dialog?.querySelector<HTMLImageElement>("[data-lightbox-image]");
+  const count = dialog?.querySelector<HTMLElement>("[data-lightbox-count]");
+  const photoButtons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-photo-index]"));
+  let activeIndex = 0;
+
+  const showPhoto = (index: number) => {
+    if (!dialog || !image || photoButtons.length === 0) return;
+    activeIndex = (index + photoButtons.length) % photoButtons.length;
+    const button = photoButtons[activeIndex];
+    image.src = button.dataset.photoSrc ?? "";
+    image.alt = button.dataset.photoAlt ?? "Photograph";
+    if (count) count.textContent = `${activeIndex + 1} / ${photoButtons.length}`;
+  };
+
+  photoButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      if (!dialog) return;
+      showPhoto(index);
+      dialog.showModal();
+    });
+  });
+
+  dialog?.querySelector("[data-lightbox-close]")?.addEventListener("click", () => dialog.close());
+  dialog?.querySelector("[data-lightbox-prev]")?.addEventListener("click", () => showPhoto(activeIndex - 1));
+  dialog?.querySelector("[data-lightbox-next]")?.addEventListener("click", () => showPhoto(activeIndex + 1));
+  dialog?.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog?.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") showPhoto(activeIndex - 1);
+    if (event.key === "ArrowRight") showPhoto(activeIndex + 1);
+  });
+</script>

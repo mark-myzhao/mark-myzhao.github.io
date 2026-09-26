@@ -360,6 +360,13 @@ function isActiveNav(href: string): boolean {
         outline-color: #96bdc9;
       }
 
+      /* The skip-link target can retain focus after a modal closes in Safari.
+         Avoid drawing a page-sized outline while keeping controls visibly focused. */
+      #main-content:focus,
+      #main-content:focus-visible {
+        outline: none;
+      }
+
       .liquid-glass-bar {
         border-color: var(--glass-border);
         background: var(--glass-chrome);

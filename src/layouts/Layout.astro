@@ -800,8 +800,9 @@ function isActiveNav(href: string): boolean {
 	                        href={link.href}
 	                        target={opensNewTab ? "_blank" : undefined}
 	                        rel={opensNewTab ? "noopener noreferrer" : undefined}
-	                        class="link-muted inline-flex min-h-11 items-center py-2 font-semibold"
+	                        class="link-muted inline-flex min-h-11 items-center gap-2 py-2 font-semibold"
 	                      >
+	                        <span class={`${link.icon} text-base`} aria-hidden="true"></span>
 	                        {link.label}
 	                        {opensNewTab && <span class="sr-only"> opens in a new tab</span>}
 	                      </a>

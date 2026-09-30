@@ -103,7 +103,7 @@ const profileAlt = siteConfig.hero.profileAlt || about.name;
         </div>
 
         <aside class="flex w-full items-center gap-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:block" aria-label="Profile">
-          <div class="relative w-20 shrink-0 overflow-hidden rounded-xl border border-paper-300/90 bg-white/70 p-1.5 shadow-paper dark:border-ink-700 dark:bg-ink-900/70 sm:w-24 lg:w-full lg:p-2">
+          <div class="relative w-20 shrink-0 overflow-hidden rounded-xl sm:w-24 lg:w-full">
             <Image
               src={about.avatar}
               alt={profileAlt}
@@ -112,7 +112,8 @@ const profileAlt = siteConfig.hero.profileAlt || about.name;
               layout="constrained"
               fit="cover"
               priority
-              class="aspect-square h-auto w-full rounded-lg object-cover"
+              draggable="false"
+              class="protected-profile-photo aspect-square h-auto w-full rounded-xl object-cover"
             />
           </div>
           {statusBadge && (
@@ -350,3 +351,18 @@ const profileAlt = siteConfig.hero.profileAlt || about.name;
     </section>
   </div>
 </Layout>
+
+<style>
+  .protected-profile-photo {
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+</style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const profilePhoto = document.querySelector<HTMLImageElement>(".protected-profile-photo");
+    profilePhoto?.addEventListener("contextmenu", (event) => event.preventDefault());
+    profilePhoto?.addEventListener("dragstart", (event) => event.preventDefault());
+  });
+</script>

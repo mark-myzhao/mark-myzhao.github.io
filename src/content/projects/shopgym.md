@@ -12,7 +12,7 @@ badges:
 tech:
   - Python
   - TypeScript
-  - GraphQL
+  - Pi
 highlights:
   - Accepted to the NeurIPS 2026 Evaluations & Datasets Track.
   - Generated 10 sandbox shops across different retail domains in one week.

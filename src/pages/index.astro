@@ -70,7 +70,7 @@ const profileAlt = siteConfig.hero.profileAlt || about.name;
   <div class="space-y-12 pb-2 sm:space-y-16 sm:pb-4">
     {showHero && (
       <section class="relative border-b border-paper-300/90 pb-9 pt-3 dark:border-ink-700 sm:pb-12 sm:pt-6">
-      <div class="relative grid gap-6 lg:grid-cols-[minmax(0,1fr)_13rem] lg:items-start lg:gap-x-14">
+      <div class="relative grid gap-6 lg:grid-cols-[minmax(0,1fr)_14rem] lg:items-start lg:gap-x-10">
         <div class="min-w-0 lg:col-start-1 lg:row-start-1">
           <h1 class="max-w-4xl font-heading text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1] tracking-[-0.035em] text-ink-950 dark:text-paper-50">
             {about.name}
@@ -102,7 +102,7 @@ const profileAlt = siteConfig.hero.profileAlt || about.name;
           )}
         </div>
 
-        <aside class="flex w-full items-center gap-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:block" aria-label="Profile">
+        <aside class="flex w-full items-center gap-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:block lg:pt-3" aria-label="Profile">
           <div class="relative w-20 shrink-0 overflow-hidden rounded-xl sm:w-24 lg:w-full">
             <Image
               src={about.avatar}
@@ -355,7 +355,12 @@ const profileAlt = siteConfig.hero.profileAlt || about.name;
 <style>
   .protected-profile-photo {
     -webkit-touch-callout: none;
+    filter: saturate(0.82) contrast(0.94) brightness(0.96);
     user-select: none;
+  }
+
+  :global(html.dark) .protected-profile-photo {
+    filter: saturate(0.72) contrast(0.92) brightness(0.84);
   }
 </style>
 

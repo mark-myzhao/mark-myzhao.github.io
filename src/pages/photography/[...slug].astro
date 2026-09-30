@@ -58,7 +58,8 @@ const cover = collection.photos[collection.coverIndex] ?? collection.photos[0];
               fetchpriority={index === 0 ? "high" : undefined}
               decoding="async"
               referrerpolicy="no-referrer"
-              class="h-auto w-full transition duration-300 group-hover:scale-[1.01] group-hover:brightness-105"
+              draggable="false"
+              class="protected-photo h-auto w-full transition duration-300 group-hover:scale-[1.01] group-hover:brightness-105"
             />
           </button>
         </figure>
@@ -85,7 +86,7 @@ const cover = collection.photos[collection.coverIndex] ?? collection.photos[0];
       <span class="i-mdi:chevron-left" aria-hidden="true"></span>
     </button>
     <figure class="flex h-full w-full items-center justify-center">
-      <img data-lightbox-image src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" class="max-h-full max-w-full object-contain" referrerpolicy="no-referrer" />
+      <img data-lightbox-image src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" draggable="false" class="protected-photo max-h-full max-w-full object-contain" referrerpolicy="no-referrer" />
     </figure>
     <button type="button" data-lightbox-next hidden={collection.photos.length < 2} class="absolute right-2 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-black/55 text-2xl text-white transition hover:bg-black/80 sm:right-5" aria-label="Next photograph">
       <span class="i-mdi:chevron-right" aria-hidden="true"></span>
@@ -97,6 +98,10 @@ const cover = collection.photos[collection.coverIndex] ?? collection.photos[0];
 <style>
   #photo-lightbox[open] { display: flex; }
   #photo-lightbox::backdrop { background: rgb(0 0 0 / 0.9); }
+  .protected-photo {
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
 </style>
 
 <script>
@@ -105,6 +110,11 @@ const cover = collection.photos[collection.coverIndex] ?? collection.photos[0];
   const count = dialog?.querySelector<HTMLElement>("[data-lightbox-count]");
   const photoButtons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-photo-index]"));
   let activeIndex = 0;
+
+  document.querySelectorAll<HTMLImageElement>(".protected-photo").forEach((photo) => {
+    photo.addEventListener("contextmenu", (event) => event.preventDefault());
+    photo.addEventListener("dragstart", (event) => event.preventDefault());
+  });
 
   const showPhoto = (index: number) => {
     if (!dialog || !image || photoButtons.length === 0) return;

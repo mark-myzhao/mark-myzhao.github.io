@@ -16,7 +16,7 @@ import { photoCollections } from "../data/photography";
         return (
           <article class="group space-y-3">
             <a href={`/photography/${collection.slug}`} class="block overflow-hidden rounded-xl bg-paper-200 dark:bg-ink-800" aria-label={`View ${collection.title} collection`}>
-              <img src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} loading="lazy" decoding="async" referrerpolicy="no-referrer" class="aspect-[4/3] h-auto w-full object-cover transition duration-500 ease-out group-hover:scale-[1.015]" />
+              <img src={cover.src} alt={cover.alt} width={cover.width} height={cover.height} loading="lazy" decoding="async" referrerpolicy="no-referrer" draggable="false" class="protected-photo aspect-[4/3] h-auto w-full object-cover transition duration-500 ease-out group-hover:scale-[1.015]" />
             </a>
             <div class="flex items-start justify-between gap-4">
               <div class="space-y-1">
@@ -31,3 +31,19 @@ import { photoCollections } from "../data/photography";
     </div>
   </div>
 </Layout>
+
+<style>
+  .protected-photo {
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+</style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll<HTMLImageElement>(".protected-photo").forEach((image) => {
+      image.addEventListener("contextmenu", (event) => event.preventDefault());
+      image.addEventListener("dragstart", (event) => event.preventDefault());
+    });
+  });
+</script>

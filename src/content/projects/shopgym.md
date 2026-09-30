@@ -1,7 +1,6 @@
 ---
 title: ShopGym
-subtitle: Realistic simulation and scalable benchmarking for e-commerce web agents
-summary: An open-source framework that turns live storefronts into reproducible sandbox shops and generates grounded evaluation tasks for shopping agents.
+summary: A realistic playground for training and evaluating e-commerce web agents.
 status: active
 period: "2026"
 order: 1
@@ -26,6 +25,8 @@ metadata:
   - label: License
     value: MIT
 links:
+  - label: Project website
+    href: https://shopgym-research.github.io
   - label: GitHub repository
     href: https://github.com/agentic-foundation-modeling-research/shop-gym
   - label: Paper

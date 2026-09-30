@@ -15,7 +15,7 @@ export const siteConfig = defineSiteConfig({
  footer: {showProfileLinks:true},
  pageTitles: {
  about:{description:"Building scalable infrastructure for data processing, LLM training, and reinforcement learning."},
- projects:{description:"Engineering projects, systems, and experiments."},
+ projects:{description:"Things I’ve built, explored, and learned from."},
  researches:{title:"Research",description:"Publications and ongoing research."}
  },
  homeBlocks: {

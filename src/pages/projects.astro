@@ -74,6 +74,8 @@ const pageDescription = siteConfig.pageTitles.projects.description ||
               const isFeatured = project.data.featured;
               const role = project.data.metadata?.find((item) => item.label.toLowerCase() === "role")?.value;
               const isActive = project.data.status === "active";
+              const projectWebsite = project.data.links.find((link) => link.label === "Project website");
+              const projectHref = projectWebsite?.href || `/projects/${project.id}`;
 
               return (
                 <article
@@ -126,7 +128,7 @@ const pageDescription = siteConfig.pageTitles.projects.description ||
                         class="entry-title text-xl transition-colors group-hover:text-accent-700 dark:group-hover:text-accent-300"
                         transition:name={`project-${project.id}-title`}
                       >
-                        <a href={`/projects/${project.id}`} class="no-underline text-inherit">
+                        <a href={projectHref} class="no-underline text-inherit">
                           {project.data.title}
                         </a>
                       </h3>
@@ -162,10 +164,10 @@ const pageDescription = siteConfig.pageTitles.projects.description ||
                     </div>
 
                     <a
-                      href={`/projects/${project.id}`}
+                      href={projectHref}
                       class="action-link text-xs font-semibold px-0 group-hover:text-accent-900 dark:group-hover:text-accent-100"
                     >
-                      <span>View details</span>
+                      <span>{projectWebsite ? "Visit project" : "View details"}</span>
                       <span
                         class="i-mdi:arrow-right text-sm transition-transform duration-200 group-hover:translate-x-1"
                         aria-hidden="true"

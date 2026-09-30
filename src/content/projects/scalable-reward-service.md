@@ -2,12 +2,10 @@
 title: Scalable Reward Service
 summary: A distributed reward evaluation service for reinforcement learning, supporting heterogeneous evaluators and concurrent training workloads.
 status: past
-period: "2023–2025"
+period: "2025"
 order: 2
 featured: false
 draft: false
-badges:
-  - Internal system
 tech:
   - Reinforcement learning
   - Distributed systems

@@ -2,12 +2,10 @@
 title: Multimodal Pretraining Data Pipeline
 summary: A large-scale data pipeline for preparing text, image, video, and audio datasets for multimodal model training.
 status: past
-period: "2023–2025"
+period: "2024"
 order: 3
 featured: false
 draft: false
-badges:
-  - Internal system
 tech:
   - AWS EMR
   - Apache Spark

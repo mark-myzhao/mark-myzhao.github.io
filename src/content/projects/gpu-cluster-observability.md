@@ -2,12 +2,10 @@
 title: GPU Cluster Observability
 summary: Health monitoring and observability for large-scale GPU training infrastructure and distributed workloads.
 status: past
-period: "2023–2025"
+period: "2024"
 order: 4
 featured: false
 draft: false
-badges:
-  - Internal system
 tech:
   - GPU infrastructure
   - Distributed training

@@ -11,15 +11,16 @@ export async function getStaticPaths() {
 
 const { collection } = Astro.props as { collection: PhotoCollection };
 const otherCollections = photoCollections.filter((item) => item.slug !== collection.slug);
+const cover = collection.photos[collection.coverIndex] ?? collection.photos[0];
 ---
 
 <Layout
   title={`${collection.title} Photography`}
   description={collection.description}
-  image={collection.photos[0]?.src}
-  imageAlt={collection.photos[0]?.alt}
-  imageWidth={collection.photos[0]?.width}
-  imageHeight={collection.photos[0]?.height}
+  image={cover?.src}
+  imageAlt={cover?.alt}
+  imageWidth={cover?.width}
+  imageHeight={cover?.height}
   schemaType="CollectionPage"
 >
   <article class="page-stack">

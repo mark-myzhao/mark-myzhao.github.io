@@ -1,10 +1,11 @@
 export interface Photograph { src: string; width: number; height: number; alt: string }
-export interface PhotoCollection { slug: string; title: string; description: string; photos: Photograph[] }
+export interface PhotoCollection { slug: string; title: string; description: string; photos: Photograph[]; coverIndex: number }
 
 type PhotoTuple = [src: string, width: number, height: number];
-const makeCollection = (slug: string, title: string, description: string, photos: PhotoTuple[]): PhotoCollection => ({
+const makeCollection = (slug: string, title: string, description: string, photos: PhotoTuple[], coverIndex = 0): PhotoCollection => ({
 	slug, title, description,
 	photos: photos.map(([src, width, height]) => ({ src, width, height, alt: `${title} photograph` })),
+	coverIndex,
 });
 
 const root = "https://cdn.myportfolio.com/cf52e289-6ed2-4f39-8707-94b1a0f61415/";
@@ -63,7 +64,7 @@ export const photoCollections: PhotoCollection[] = [
 		p("c50c4961-751b-41bb-b677-5d52954b62f8_rw_1920.jpg?h=c03483f094157fb8b89547f37feb4921",436,327),
 		p("06d54746-1ef8-4301-9499-860deac1cd73_rw_1920.jpg?h=cb3ce3097222367ee588af3710922123",578,385),
 		p("a1bf7de9-15bc-49fc-a45a-473957cad26c_rw_1920.jpg?h=ebcb564b5c2a32cef190970120339cdb",578,385),
-	]),
+	], 1),
 	makeCollection("road", "Road", "A frame from the journey between places.", [
 		p("c9a6a0a0-4ea8-4df0-b35e-7499db456cc5_rw_1920.jpg?h=259369a5f847e0f10c179069cd86d785",1164,1552),
 	]),
